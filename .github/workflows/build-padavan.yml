@@ -23,7 +23,7 @@ env:
   TOOLCHAIN_URL: https://github.com/hanwckf/padavan-toolchain/releases/download/v1.1/mipsel-linux-uclibc.tar.xz
   WORK_PATH: /opt/rt-n56u
   TIME_ZONE: Asia/Shanghai
-  TARGET_NAME: K2P-5.0
+  TARGET_NAME: NEWIFI3
   FIRMWARE_VERSION: 20201015
   FIRMWARE_DATEPREFIX: $(date +"%Y%m%d")
   FIRMWARE_AUTHOR: chongshengB
@@ -61,9 +61,9 @@ jobs:
     - name: Reset golang dl url
       run: |
         cd $WORK_PATH/trunk/tools
-        sudo chmod +x ./Makefile
-        sed -i "s#https://studygolang.com/dl/golang#https://golang.org/dl#g" ./Makefile
-        sed -i "s#go1.14.linux-amd64.tar.gz#go\$(go_version).linux-amd64.tar.gz#g" ./Makefile
+        #sudo chmod +x ./Makefile
+        #sed -i "s#https://studygolang.com/dl/golang#https://golang.org/dl#g" ./Makefile
+        #sed -i "s#go1.14.linux-amd64.tar.gz#go\$(go_version).linux-amd64.tar.gz#g" ./Makefile
     - name: Apply rainbow themes
       if: env.APPLY_RAINBOWTHEME == 'true'
       run: |
@@ -126,8 +126,8 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config #阿里DDNS
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=n" >> .config #smartdns
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=n" >> .config #smartdns二进制文件
-        echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> .config #集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
-        echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=n" >> .config #集成trojan执行文件(1.1M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
+        echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=y" >> .config #集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
+        echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=y" >> .config #集成trojan执行文件(1.1M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
         echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=n" >> .config #KP广告过滤
         echo "CONFIG_FIRMWARE_INCLUDE_CADDY=n" >> .config #在线文件管理服务
         echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >> .config #集成caddu执行文件，此文件有13M,请注意固件大小。如果不集成，会从网上下载下来执行，不影响正常使用
