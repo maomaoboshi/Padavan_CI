@@ -62,6 +62,7 @@ jobs:
       run: |
         cd $WORK_PATH/trunk/user/v2ray
         sudo chmod +x ./Makefile
+        sed -i "s#https://goproxy.io#http://mirrors.aliyun.com/goproxy#g" ./Makefile
         sed -i "s/V2ray_VERSION := 4.31.2/V2ray_VERSION := 4.31.1/g" ./Makefile
         sed -i "s#https://codeload.github.com/v2ray#https://codeload.github.com/v2fly#g" ./Makefile
     - name: Apply rainbow themes
