@@ -60,11 +60,11 @@ jobs:
         tar -xvf mipsel-linux-uclibc.tar.xz -C toolchain-3.4.x
     - name: Downgrade v2ray version to v4.31.1
       run: |
-        cd $WORK_PATH/trunk/user/v2ray
-        sudo chmod +x ./Makefile
-        sed -i "s#https://goproxy.io#http://mirrors.aliyun.com/goproxy#g" ./Makefile
-        sed -i "s/V2ray_VERSION := 4.31.2/V2ray_VERSION := 4.31.1/g" ./Makefile
-        sed -i "s#https://codeload.github.com/v2ray#https://codeload.github.com/v2fly#g" ./Makefile
+        #cd $WORK_PATH/trunk/user/v2ray
+        #sudo chmod +x ./Makefile
+        #sed -i "s#https://goproxy.io#http://mirrors.aliyun.com/goproxy#g" ./Makefile
+        #sed -i "s/V2ray_VERSION := 4.31.2/V2ray_VERSION := 4.31.1/g" ./Makefile
+        #sed -i "s#https://codeload.github.com/v2ray#https://codeload.github.com/v2fly#g" ./Makefile
     - name: Apply rainbow themes
       if: env.APPLY_RAINBOWTHEME == 'true'
       run: |
